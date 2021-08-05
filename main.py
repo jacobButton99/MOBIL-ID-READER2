@@ -2,7 +2,7 @@ from __future__ import print_function
 import pyzbar.pyzbar as pyzbar
 import cv2
 from cryptography.fernet import Fernet
-from include.hid import Keyboard
+from hid import Keyboard
 
 ##############################################################################
 #### This is the code for continuous detection and decryption of a qr code
