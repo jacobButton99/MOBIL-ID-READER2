@@ -1,5 +1,7 @@
 #!/bin/bash
 
+SERVER = 'https://mobileid.oc.edu'
+
 # INSTALLER SCRIPT FOR MOBIL-ID Reader
 
 if [ $(id -u) -ne 0 ]; then
