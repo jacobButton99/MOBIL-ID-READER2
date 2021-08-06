@@ -82,12 +82,13 @@ cd /home/pi/MOBIL-ID-Reader2
 source bin/activate
 
 echo "Downloading dependencies..."
-pip3 install -r requirements.txt
+
 
 sudo apt-get install python3-opencv
 sudo apt-get install libqt4-test python3-sip python3-pyqt5 libqtgui4 libjasper-dev libatlas-base-dev -y
 pip3 install opencv-contrib-python
 sudo modprobe bcm2835-v4l2
+pip3 install pyzbar
 
 # CONFIG -------------------------------------------------------------------
 
