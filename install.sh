@@ -91,6 +91,7 @@ pip3 install opencv-contrib-python -y
 sudo modprobe bcm2835-v4l2
 sudo apt-get install libzbar0 -y
 pip3 install pyzbar
+sudo mv /home/pi/MOBIL-ID-Reader2/lib/python3.7/site-packages/pyzbar /home/pi/MOBIL-ID-Reader2/pyzbar
 
 # CONFIG -------------------------------------------------------------------
 
