@@ -68,9 +68,9 @@ sudo apt-get install python3-pip -y
 sudo apt-get install python3-venv -y
 
 echo "Downloading MOBIL-ID Reader software..."
-if [ ! -d "/home/pi/MOBIL-ID-Reader" ] 
+if [ ! -d "/home/pi/MOBIL-ID-Reader2" ] 
 then
-    sudo rm -r /home/pi/MOBIL-ID-Reader
+    sudo rm -r /home/pi/MOBIL-ID-Reader2
 fi
 
 cd /home/pi
@@ -78,7 +78,7 @@ git clone https://github.com/jacobButton99/MOBIL-ID-Reader2
 
 echo "Setting up virtual environment..."
 python3 -m venv /home/pi/MOBIL-ID-Reader
-cd /home/pi/MOBIL-ID-Reader
+cd /home/pi/MOBIL-ID-Reader2
 source bin/activate
 
 echo "Downloading dependencies..."
