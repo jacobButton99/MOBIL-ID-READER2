@@ -3,6 +3,7 @@ import pyzbar.pyzbar as pyzbar
 import cv2
 from cryptography.fernet import Fernet
 from hid import Keyboard
+from time import sleep
 
 ##############################################################################
 #### This is the code for continuous detection and decryption of a qr code
@@ -52,6 +53,7 @@ while(1):
         if decrypted != None:
             print(decrypted.decode())
             kbd.write(str(decrypted.decode()) + '\n')
+            sleep(1)
 
     
 # resets the camera when the code is done
