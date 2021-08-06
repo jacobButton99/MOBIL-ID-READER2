@@ -2,7 +2,7 @@
 
 SERVER = 'https://mobileid.oc.edu'
 
-# INSTALLER SCRIPT FOR MOBIL-ID Reader
+# INSTALLER SCRIPT FOR MOBIL-ID Reader2
 
 if [ $(id -u) -ne 0 ]; then
 	echo "Installer must be run as root."
@@ -37,13 +37,13 @@ clear
 echo "To setup a new MOBIL-ID Reader we will need to"
 echo "first reset the default hostname and password."
 echo
-echo "We want to set the hostname to MOBIL-ID-Reader-XXX"
+echo "We want to set the hostname to MOBIL-ID-Reader2-XXX"
 echo "where XXX is a unique identifier for the device."
 echo
 echo -n "Enter a unique identifier for this device: "
 read ID
 echo
-echo "Hostname will be changed to MOBIL-ID-Reader-"$ID
+echo "Hostname will be changed to MOBIL-ID-Reader2-"$ID
 
 echo
 echo "Now lets change the default password (raspberry)."
@@ -77,7 +77,7 @@ cd /home/pi
 git clone https://github.com/jacobButton99/MOBIL-ID-Reader2
 
 echo "Setting up virtual environment..."
-python3 -m venv /home/pi/MOBIL-ID-Reader
+python3 -m venv /home/pi/MOBIL-ID-Reader2
 cd /home/pi/MOBIL-ID-Reader2
 source bin/activate
 
@@ -92,9 +92,9 @@ sudo modprobe bcm2835-v4l2
 # CONFIG -------------------------------------------------------------------
 
 echo "Configuring MOBIL-ID software..."
-touch /home/pi/MOBIL-ID-Reader/config.py
-sudo sed -i '/SERIAL_NUMBER/d' /home/pi/MOBIL-ID-Reader/config.py
-echo "SERIAL_NUMBER = '"$ID"'" | sudo tee -a /home/pi/MOBIL-ID-Reader/config.py
+touch /home/pi/MOBIL-ID-Reader2/config.py
+sudo sed -i '/SERIAL_NUMBER/d' /home/pi/MOBIL-ID-Reader2/config.py
+echo "SERIAL_NUMBER = '"$ID"'" | sudo tee -a /home/pi/MOBIL-ID-Reader2/config.py
 
 echo "Configuring system..."
 sudo sed -i 's+ init=/bin/systemd++' /boot/cmdline.txt
@@ -152,7 +152,7 @@ echo
 echo "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="
 echo "Upon reboot, ssh into the Raspberry Pi using:"
 echo
-echo "ssh pi@MOBIL-ID-Reader-"$ID".local"
+echo "ssh pi@MOBIL-ID-Reader2-"$ID".local"
 echo
 echo "...and your new password."
 echo "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="
