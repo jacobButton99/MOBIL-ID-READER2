@@ -1,4 +1,4 @@
-from include.hid import Keyboard
+from hid import Keyboard
 
 kbd = Keyboard()
 
