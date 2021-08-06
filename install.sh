@@ -117,6 +117,7 @@ sudo chmod +x /usr/bin/mobil_id_usb
 
 sudo sed -i '/mobil_id_usb/d' /etc/rc.local
 sudo sed -i '19 a /usr/bin/mobil_id_usb # libcomposite configuration' /etc/rc.local
+sudo sed -i '20 a sudo python3 /home/pi/MOBIL-ID-Reaader2/main.py & # reader script' /etc/rc.local
 
 sudo tee -a /usr/bin/mobil_id_usb > /dev/null << EOT
 #!/bin/bash
@@ -144,32 +145,6 @@ ln -s functions/hid.usb0 configs/c.1/
 # End functions
 ls /sys/class/udc > UDC
 EOT
-
-echo "Creating MOBIL-ID Reader Startup Service..."
-if test -f "/lib/systemd/system/mobil-id.service"; then
-    sudo rm /lib/systemd/system/mobil-id.service
-fi
-
-sudo tee -a /lib/systemd/system/mobil-id.service > /dev/null << EOT
-[Unit]
-Description=MOBIL-ID Reader
-After=multi-user.target
-[Service]
-Type=idle
-ExecStart=/usr/bin/sudo /home/pi/MOBIL-ID-Reader/bin/python3 /home/pi/MOBIL-ID-Reader/main.py > /home/pi/system.log 2>&1
-[Install]
-WantedBy=multi-user.target
-EOT
-
-touch /home/pi/system.log
-sudo chmod +x /home/pi/system.log
-
-sudo chmod 644 /lib/systemd/system/mobil-id.service
-sudo systemctl daemon-reload
-sudo systemctl enable mobil-id.service
-
-echo "Starting MOBIL-ID Reader service..."
-sudo systemctl start mobil-id.service
 
 
 # PROMPT FOR REBOOT --------------------------------------------------------

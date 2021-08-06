@@ -9,7 +9,7 @@ def encrypt_id(id):
     """
     Encrypts a id
     """
-    key = open("server.key", "rb").read()
+    key = open("/home/pi/MOBIL-ID-Reader2/reader.key", "rb").read()
     encoded_id = id.encode()
     f = Fernet(key)
     encrypted_id = f.encrypt(encoded_id)
@@ -20,7 +20,7 @@ def decrypt_id(encrypted_id):
     """
     Decrypts an encrypted id
     """
-    key = open("reader.key", "rb").read()
+    key = open("/home/pi/MOBIL-ID-Reader2/reader.key.key", "rb").read()
     f = Fernet(key)
     try:
         decrypted_id = f.decrypt(encrypted_id)

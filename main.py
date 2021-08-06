@@ -22,7 +22,7 @@ def decode_qr(im):
 # uses Cryptography to decrypt the id
 def decrypt_id(encrypted_id):
 
-    key = open("reader.key", "rb").read()
+    key = open("/home/pi/MOBIL-ID-Reader2/reader.key", "rb").read()
     f = Fernet(key)
 
     try:
@@ -35,6 +35,7 @@ def decrypt_id(encrypted_id):
 # sets up camera
 capture = cv2.VideoCapture(0)
 kbd = Keyboard()
+cur_id = "0"
 
 # Contiuios loop for detecting and decoding
 
@@ -51,9 +52,11 @@ while(1):
 
         # if the "id" is decrypted succcessfully it will be printed
         if decrypted != None:
-            print(decrypted.decode())
-            kbd.write(str(decrypted.decode()) + '\n')
-            sleep(1)
+            sleep(3)
+            if decrypted.decode() != cur_id:
+                cur_id = decrypted.decode()
+                print(cur_id)
+                kbd.write(str(cur_id) + '\n')
 
     
 # resets the camera when the code is done

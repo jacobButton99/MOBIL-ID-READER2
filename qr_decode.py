@@ -9,7 +9,7 @@ def decode_qr(im):
     else:
         return decoded_id[0].data.decode()
 
-im = cv2.imread("qrcode.png")
+im = cv2.imread("/home/pi/MOBIL-ID-Reader2/qrcode.png")
 
 id_num = decode_qr(im)
 
